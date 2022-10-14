@@ -9,11 +9,15 @@ const Pet = (props) => {
   }
 
   return (
-    <Link to={`/details/${id}`} className="pet">
-      <div className="image-container">
-        <img src={hero} alt={name} />
+    <Link to={`/details/${id}`} className="relative block w-96">
+      <div>
+        <img
+          className="border-4 border-b-0 border-red-400 rounded-md"
+          src={hero}
+          alt={name}
+        />
       </div>
-      <div className="info">
+      <div className="absolute bottom-0 left-0 bg-gradient-to-tr from-white to-transparent pr-2 p2">
         <h1>{name}</h1>
         <h2>{`${animal} — ${breed} — ${location}`}</h2>
       </div>

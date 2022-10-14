@@ -1,9 +1,9 @@
-import { Component } from "react";
+import { Component, lazy } from "react";
 import { useParams } from "react-router-dom";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "./ThemeContext";
-import Modal from "./Modal";
+const Modal = lazy(() => import("./Modal"));
 
 class Details extends Component {
   // constructor(props) {
@@ -53,17 +53,18 @@ class Details extends Component {
       this.state;
 
     return (
-      <div className="details">
+      <div className="details h-full">
         <Carousel images={images} />
-        <div>
-          <h1>{name}</h1>
-          <h2>
+        <div className="container mx-auto">
+          <h1 className=" font-bold text-[5rem]">{name}</h1>
+          <h2 className="text-red-600 font-extrabold uppercase">
             {animal} - {breed} - {city} - {state}{" "}
           </h2>
           {/* How can you read into class component  */}
           <ThemeContext.Consumer>
             {([theme]) => (
               <button
+                className="btn"
                 onClick={this.toggleModal}
                 style={{ backgroundColor: theme }}
               >
@@ -72,7 +73,7 @@ class Details extends Component {
               </button>
             )}
           </ThemeContext.Consumer>
-          <p>{description}</p>
+          <p className="text-[1.2rem] w-[50%]">{description}</p>
           {showModal ? (
             <Modal>
               <div>
